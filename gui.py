@@ -30,6 +30,14 @@ while True:
             functions.write_todos(todos_list)
             window["list_box"].update(todos_list)
             window["input_text"].update("")
-
+    elif event == "Edit":
+        if len(values["input_text"]) > 0 :
+            todo_from_listbox = window["list_box"].get()
+            todos_from_file = functions.get_todos()
+            index = todos_from_file.index(todo_from_listbox[0])
+            todos_from_file[index] = values["input_text"] + "\n"
+            functions.write_todos(todos_from_file)
+            window["list_box"].update(functions.get_todos())
+            window["input_text"].update("")
 
 window.close()
