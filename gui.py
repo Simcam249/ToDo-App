@@ -39,5 +39,11 @@ while True:
             functions.write_todos(todos_from_file)
             window["list_box"].update(functions.get_todos())
             window["input_text"].update("")
+    elif event == "Complete":
+        word_from_listbox = window["list_box"].get()
+        list_from_file = functions.get_todos()
+        list_from_file.remove(word_from_listbox[0])
+        functions.write_todos(list_from_file)
+        window["list_box"].update(functions.get_todos())
 
 window.close()
